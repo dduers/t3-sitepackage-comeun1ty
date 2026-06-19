@@ -1,0 +1,129 @@
+routeEnhancers:
+  PageTypeSuffix:
+    type: PageType
+    map:
+      sitemap.xml: 1533906435
+  News:
+    type: Extbase
+    # limitToPages:
+    #   - 9
+    #   - 23
+    #   - 24
+    extension: News
+    plugin: Pi1
+    routes:
+      - routePath: /list/
+        _controller: "News::list"
+      - routePath: "/list/{page}"
+        _controller: "News::list"
+        _arguments:
+          page: "@widget_0/currentPage"
+      - routePath: "/{news_title}"
+        _controller: "News::detail"
+        _arguments:
+          news_title: news
+      - routePath: "/tag/{tag_name}"
+        _controller: "News::list"
+        _arguments:
+          tag_name: overwriteDemand/tags
+      - routePath: "/list/{year}/{month}"
+        _controller: "News::list"
+        _arguments:
+          year: overwriteDemand/year
+          month: overwriteDemand/month
+    defaultController: "News::list"
+    defaults:
+      page: "0"
+    aspects:
+      news_title:
+        type: PersistedAliasMapper
+        tableName: tx_news_domain_model_news
+        routeFieldName: path_segment
+      page:
+        type: StaticRangeMapper
+        start: "1"
+        end: "100"
+      month:
+        type: StaticRangeMapper
+        start: "1"
+        end: "12"
+      year:
+        type: StaticRangeMapper
+        start: "1984"
+        end: "2525"
+      tag_name:
+        type: PersistedAliasMapper
+        tableName: tx_news_domain_model_tag
+        routeFieldName: slug
+  T3GamingRecords_game:
+    type: Extbase
+    # limitToPages:
+    #   - 20
+    extension: T3GamingRecords
+    plugin: game
+    routes:
+      - routePath: /
+        _controller: "Game::list"
+      - routePath: "{game_title}"
+        _controller: "Game::detail"
+        _arguments:
+          game_title: gameId
+    defaultController: "Game::list"
+    aspects:
+      game_title:
+        type: PersistedAliasMapper
+        tableName: tx_t3gamingrecords_domain_model_game
+        routeFieldName: slug
+  T3GamingRecords_player:
+    type: Extbase
+    # limitToPages:
+    #   - 21
+    extension: T3GamingRecords
+    plugin: player
+    routes:
+      - routePath: /
+        _controller: "Player::list"
+      - routePath: "{username}"
+        _controller: "Player::detail"
+        _arguments:
+          username: playerId
+    defaultController: "Player::list"
+    aspects:
+      username:
+        type: PersistedAliasMapper
+        tableName: fe_users
+        routeFieldName: username
+  T3GamingRecords_record:
+    type: Extbase
+    # limitToPages:
+    #   - 22
+    extension: T3GamingRecords
+    plugin: record
+    routes:
+      - routePath: /
+        _controller: "Record::list"
+      - routePath: "{game_title}/{level_title}/{difficulty_title}/{uid}"
+        _controller: "Record::detail"
+        _arguments:
+          game_title: gameId
+          level_title: levelId
+          difficulty_title: difficultyId
+          uid: recordId
+    defaultController: "Record::list"
+    aspects:
+      game_title:
+        type: PersistedAliasMapper
+        tableName: tx_t3gamingrecords_domain_model_game
+        routeFieldName: slug
+      level_title:
+        type: PersistedAliasMapper
+        tableName: tx_t3gamingrecords_domain_model_level
+        routeFieldName: slug
+      difficulty_title:
+        type: PersistedAliasMapper
+        tableName: tx_t3gamingrecords_domain_model_difficulty
+        routeFieldName: slug
+      uid:
+        type: PersistedAliasMapper
+        tableName: tx_t3gamingrecords_domain_model_record
+        routeFieldName: uid

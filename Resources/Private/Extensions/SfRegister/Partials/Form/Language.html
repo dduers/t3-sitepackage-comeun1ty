@@ -1,0 +1,25 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	xmlns:register="http://typo3.org/ns/Evoweb/SfRegister/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:variable name="languageKey">
+	<register:languageKey type="languages" />
+</f:variable>
+<div class="form-floating mb-3 {fieldName}">
+
+
+
+	<register:form.selectStaticLanguage property="{fieldName}" id="{fieldName}"
+		prependOptionLabel="{f:translate(id: 'please_select')}"
+		value="{f:if(condition: '{user.{fieldName}}', then: '{user.{fieldName}}', else: options.defaultValue)}"
+		allowedLanguages="{options.allowedLanguages}" optionLabelField="lgName{languageKey}"
+		class="form-select {options.cssClass}" />
+
+	<label for="{fieldName}" class="ps-4">
+		<f:translate id="{fieldName}" />
+		<f:render partial="Required" arguments="{field: fieldName}" />
+	</label>
+	<f:render partial="FieldError" arguments="{for: 'user', field: fieldName}" />
+
+</div>
+
+</html>

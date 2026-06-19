@@ -1,0 +1,33 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:register="http://typo3.org/ns/Evoweb/SfRegister/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:variable name="minified" value="{register:applicationContext(environment: 'Development', then: '.min')}" />
+<f:asset.css identifier="sfregister_css"
+    href="EXT:sf_register/Resources/Public/Stylesheets/sf_register{minified}.css" />
+<f:asset.script identifier="sfregister_js" src="EXT:sf_register/Resources/Public/JavaScript/sf_register{minified}.js" />
+
+<div class="form-floating mb-3 {fieldName}">
+
+    <register:form.selectStaticCountryZones property="{fieldName}" id="sfrZone"
+        prependOptionLabel="{f:translate(id: 'please_select')}"
+        parent="{f:if(condition: user.staticInfoCountry, then: user.staticInfoCountry, else: options.defaultValue)}"
+        class="form-select {options.cssClass}" />
+
+    <label for="sfrZone" class="ps-4">
+        <f:translate id="{fieldName}" />
+        <f:render partial="Required" arguments="{field: fieldName}" />
+    </label>
+    <f:render partial="FieldError" arguments="{for: 'user', field: fieldName}" />
+
+    <div id="sfrZone_empty" class="d-none form-control-plaintext">
+        <f:translate id="no_zone_available" />
+    </div>
+    <div id="sfrZone_loading" class="d-none spinner-border text-primary" role="status">
+        <span class="sr-only">
+            <f:translate id="zone_loading" />
+        </span>
+    </div>
+</div>
+
+
+</html>

@@ -1,0 +1,12 @@
+name: dduers/t3-sitepackage-comeun1ty
+label: "TYPO3 CMS Sitepackage: Comeun1ty"
+dependencies:
+  - typo3/fluid-styled-content
+  - typo3/fluid-styled-content-css
+  - typo3/form
+  - typo3/felogin
+  - typo3/seo-sitemap
+  - typo3/email
+  - georgringer/news-twb5
+  - evoweb/sf-register-minimum
+  - dduers/t3-gaming-records

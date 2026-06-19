@@ -1,0 +1,65 @@
+categories:
+  T3SitepackageComeun1ty:
+    label: "Sitepackage (Comeun1ty)"
+  T3SitepackageComeun1ty.templates:
+    label: "Templates"
+    parent: T3SitepackageComeun1ty
+  T3SitepackageComeun1ty.layout:
+    label: "Layout"
+    parent: T3SitepackageComeun1ty
+  T3SitepackageComeun1ty.menus:
+    label: "Menus"
+    parent: T3SitepackageComeun1ty
+  T3SitepackageComeun1ty.permissions:
+    label: "Permissions"
+    parent: T3SitepackageComeun1ty
+
+settings:
+  T3SitepackageComeun1ty.templateRootPath:
+    label: "Template root path"
+    category: T3SitepackageComeun1ty.templates
+    description: "Path to the templates root directory."
+    type: string
+    default: "EXT:t3_sitepackage_comeun1ty/Resources/Private/"
+
+  T3SitepackageComeun1ty.logo:
+    label: "Logo"
+    category: T3SitepackageComeun1ty.layout
+    description: "Path to the logo of My Site Package."
+    type: string
+    default: "EXT:t3_sitepackage_comeun1ty/Resources/Public/Images/logo.svg"
+
+  T3SitepackageComeun1ty.logo-alt:
+    label: "Logo Alt text"
+    category: T3SitepackageComeun1ty.layout
+    description: "Alternative text of the logo for the visually impaired"
+    type: string
+    default: "Logo"
+
+  T3SitepackageComeun1ty.favicon:
+    label: "Favicon"
+    description: "This icon is displayed in search engine results and in the browser tab"
+    category: T3SitepackageComeun1ty.layout
+    type: string
+    default: "EXT:t3_sitepackage_comeun1ty/Resources/Public/Icons/favicon.svg"
+
+  T3SitepackageComeun1ty.footerMenuRoot:
+    label: "Footer menu root uid"
+    description: "The subpages of this page are displayed in the footer"
+    category: T3SitepackageComeun1ty.menus
+    type: int
+    default: 0
+
+  T3SitepackageComeun1ty.groupIdForNewPages:
+    label: "Group ID for new pages"
+    category: T3SitepackageComeun1ty.permissions
+    description: "Set the default group ID for new pages."
+    type: int
+    default: 0
+
+  T3SitepackageComeun1ty.userIdForNewPages:
+    label: "User ID for new pages"
+    category: T3SitepackageComeun1ty.permissions
+    description: "Set the default user ID for new pages."
+    type: int
+    default: 0

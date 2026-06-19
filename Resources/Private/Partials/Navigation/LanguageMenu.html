@@ -1,0 +1,29 @@
+<f:if condition="{languagenavigation}">
+    <ul id="language_menu" class="list-group list-group-horizontal list-group-flush language-menu">
+        <f:for each="{languagenavigation}" as="item">
+            <li
+                class="rounded-0 border-0 list-group-item {f:if(condition: item.active, then: 'active bg-dark')} {f:if(condition: item.available, else: 'text-muted')}">
+                <f:if condition="{item.available}">
+                    <f:then>
+                        <f:if condition="{item.active}">
+                            <f:then>
+                                <span>{item.navigationTitle}</span>
+                                </a>
+                            </f:then>
+                            <f:else>
+                                <a href="{item.link}" hreflang="{item.hreflang}" title="{item.title}"
+                                    class="text-decoration-none text-dark">
+                                    <span>{item.navigationTitle}</span>
+                                </a>
+                            </f:else>
+                        </f:if>
+
+                    </f:then>
+                    <f:else>
+                        <span>{item.navigationTitle}</span>
+                    </f:else>
+                </f:if>
+            </li>
+        </f:for>
+    </ul>
+</f:if>

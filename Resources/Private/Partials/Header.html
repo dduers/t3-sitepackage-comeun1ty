@@ -1,0 +1,21 @@
+<nav class="navbar bg-dark navbar-expand-lg mb-2 sticky-top" data-bs-theme="dark">
+    <div class="container">
+
+        <a href="{site.base.path}" class="navbar-brand">
+            <f:image src="{settings.T3SitepackageComeun1ty.logo}" alt="{settings.T3SitepackageComeun1ty.logo-alt}"
+                height="50px" class="pt-1 pe-2" />
+            {site.configuration.websiteTitle}
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuToggler"
+            aria-controls="menuToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="menuToggler">
+            <f:render partial="Navigation/Menu" arguments="{_all}" />
+        </div>
+
+    </div>
+</nav>

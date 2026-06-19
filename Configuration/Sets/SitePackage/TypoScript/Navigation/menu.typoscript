@@ -1,0 +1,16 @@
+page {
+    10 {
+        dataProcessing {
+            20 = menu
+            20 {
+                // special = directory
+                special.value.field = pages
+                levels = 2
+                expandAll = 1
+                // entryLevel = 0
+                includeSpacer = 1
+                as = menu
+            }
+        }
+    }
+}

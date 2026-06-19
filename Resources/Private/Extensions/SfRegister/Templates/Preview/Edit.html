@@ -1,0 +1,56 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<table class="table table-condensed table-hover news-table">
+    <colgroup>
+        <col style="width: 40%"/>
+        <col style="width: 60%"/>
+    </colgroup>
+    <thead>
+        <tr>
+            <th colspan="2">
+                <f:translate id="form_flexform.settings-of" domain="sf_register.be"/>
+                "<f:translate id="tt_content.list_type_edit" domain="sf_register.be"/>"
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th class="align-top"><f:translate id="form_flexform.settings.fields.selected" domain="sf_register.be"/></th>
+            <td>
+                <f:if condition="{record.pi_flexform.sheets.sDEF.settings.fields.selected}">
+                    <f:then>
+                        <f:for each="{record.pi_flexform.sheets.sDEF.settings.fields.selected}" as="field" iteration="iterator">
+                            <f:translate id="fe_users.{field}" default="{field}" domain="sf_register.be"/><f:if condition="!{iterator.isLast}"><br></f:if>
+                        </f:for>
+                    </f:then>
+                    <f:else><f:translate id="form_flexform.settings.fields.nonSelected" domain="sf_register.be"/></f:else>
+                </f:if>
+            </td>
+        </tr>
+        <f:if condition="{record.pi_flexform.sheets.sDEF.settings.templateRootPath}">
+            <tr>
+                <th><f:translate id="form_flexform.settings.viewTemplateRootPath.short" domain="sf_register.be"/></th>
+                <td>{record.pi_flexform.sheets.sDEF.settings.templateRootPath}</td>
+            </tr>
+        </f:if>
+        <tr>
+            <th class="align-top"><f:translate id="pages" domain="sf_register.be"/></th>
+            <td>
+                <f:for each="{record.pages}" as="page" iteration="iterator">
+                    <core:iconForRecord table="pages" row="{
+                            uid: page.uid,
+                            hidden: page.hidden,
+                            starttime: page.starttime,
+                            endtime: page.endtime,
+                            fe_group: page.fe_group,
+                            deleted: page.deleted
+                        }" /> {page.title}<f:if condition="!{iterator.isLast}"><br></f:if>
+                </f:for>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+</html>

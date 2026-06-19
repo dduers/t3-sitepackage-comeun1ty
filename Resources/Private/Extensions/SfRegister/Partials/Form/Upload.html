@@ -1,0 +1,37 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	xmlns:register="http://typo3.org/ns/Evoweb/SfRegister/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:variable name="minified" value="{register:applicationContext(environment: 'Development', then: '.min')}" />
+<f:asset.css identifier="sfregister_css"
+	href="EXT:sf_register/Resources/Public/Stylesheets/sf_register{minified}.css" />
+<f:asset.script identifier="sfregister_js" src="EXT:sf_register/Resources/Public/JavaScript/sf_register{minified}.js" />
+
+<div class="col-md-12 mb-3 {fieldName}">
+
+
+	<div>
+		<label for="{fieldName}" class="form-label">
+			<f:translate id="{fieldName}" />
+			<f:render partial="Required" arguments="{field: '{fieldName}'}" />
+		</label>
+		<register:form.upload property="{fieldName}.0" class="form-control form-control-lg {options.cssClass}"
+			id="uploadButton">
+			<f:if condition="{resource}">
+				<f:image image="{resource}" alt="" width="50" />
+				<f:form.hidden name="removeImage" id="removeImage" value="0" />
+				<f:form.button type="button" id="removeImageButton" class="btn btn-danger">
+					{f:translate(id:'submit_removeImage')}</f:form.button>
+			</f:if>
+		</register:form.upload>
+	</div>
+
+
+
+
+	<f:render partial="FieldError" arguments="{for: 'user', field: '{fieldName}'}" />
+
+
+	<div id="uploadFile"></div>
+</div>
+
+</html>

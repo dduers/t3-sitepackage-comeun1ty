@@ -1,0 +1,5 @@
+config.admPanel = 1
+
+plugin.tx_sfregister.settings {
+    useEmailAddressAsUsername = 0
+}

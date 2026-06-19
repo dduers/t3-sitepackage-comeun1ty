@@ -1,0 +1,43 @@
+#
+# BACKENDLAYOUT: DEFAULT
+#
+mod {
+    web_layout {
+        BackendLayouts {
+            default {
+                title = Default
+                config {
+                    backend_layout {
+                        colCount = 1
+                        rowCount = 1
+                        rows {
+                            1 {
+                                columns {
+                                    1 {
+                                        name = Stage 
+                                        // LLL:site_package.backend.layouts:column.stage
+                                        colPos = 1
+                                        identifier = stage
+                                        slideMode = slide
+                                        // allowedContentTypes = site_package_jumbotron,text
+                                    }
+                                }
+                            }
+                            2 {
+                                columns {
+                                    1 {
+                                        name = Normal
+                                        colPos = 0
+                                        identifier = normal
+                                        // disallowedContentTypes = site_package_jumbotron
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                icon = EXT:t3_sitepackage_comeun1ty/Resources/Public/Icons/BackendLayouts/default.svg
+            }
+        }
+    }
+}

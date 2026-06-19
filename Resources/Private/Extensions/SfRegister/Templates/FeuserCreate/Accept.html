@@ -1,0 +1,28 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+<f:section name="Main">
+
+	<f:if condition="{userNotFound}">
+		<div class="alert alert-danger">
+			<f:translate id="account_not_found" />
+		</div>
+	</f:if>
+	<f:if condition="{userAlreadyAccepted}">
+		<div class="alert alert-warning">
+			<f:format.raw>
+				<f:translate id="account_already_activated" arguments="{0: user.username}" />
+			</f:format.raw>
+		</div>
+	</f:if>
+	<f:if condition="{userAccepted}">
+		<div class="alert alert-success">
+			<f:format.raw>
+				<f:translate id="account_successful_activated" arguments="{0: user.username}" />
+			</f:format.raw>
+		</div>
+	</f:if>
+</f:section>
+
+</html>

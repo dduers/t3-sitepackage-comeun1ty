@@ -1,0 +1,11 @@
+page {
+    10 {
+        dataProcessing {
+            50 = TYPO3\CMS\Frontend\DataProcessing\LanguageMenuProcessor
+            50 {
+                languages = auto
+                as = languagenavigation
+            }
+        }
+    }
+}

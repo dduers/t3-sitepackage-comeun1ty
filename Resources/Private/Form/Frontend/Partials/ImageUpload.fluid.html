@@ -1,0 +1,116 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+<formvh:renderRenderable renderable="{element}">
+    <f:form.validationResults for="{element.rootForm.identifier}.{element.identifier}">
+        <f:if condition="{element.properties.elementDescription}">
+            <f:variable name="aria" value="{describedby: '{element.uniqueIdentifier}-desc'}" />
+        </f:if>
+        <f:if condition="{validationResults.errors}">
+            <f:variable name="aria" value="{invalid: 'true', describedby: '{element.uniqueIdentifier}-errors'}" />
+        </f:if>
+
+        <f:render partial="Field/Field" arguments="{element: element}" contentAs="elementContent">
+            <formvh:form.uploadedResource property="{element.identifier}" as="image" id="{element.uniqueIdentifier}"
+                class="form-control form-control-lg {element.properties.elementClassAttribute}"
+                errorClass="{element.rootForm.renderingOptions.fieldProperties.errorClassAttribute}"
+                additionalAttributes="{formvh:translateElementProperty(element: element, property: 'fluidAdditionalAttributes')}"
+                accept="{element.properties.allowedMimeTypes}" aria="{aria}" multiple="{element.properties.multiple}">
+                <f:if condition="{image}">
+                    <f:if condition="{element.properties.multiple}">
+                        <f:then>
+
+
+                            <div id="{element.uniqueIdentifier}-preview"
+                                class="container form-element-imageupload-list">
+                                <div class="row">
+
+
+                                    <f:for each="{image}" as="singleImage" iteration="iterator">
+
+
+                                        <div
+                                            class="col-md-3 border mb-2 pt-2 bg-light form-element-imageupload-item form-element-imageupload-item-{singleImage.originalResource.extension}">
+
+
+
+                                            <a href="{f:uri.image(image: singleImage, maxWidth: element.properties.imageLinkMaxWidth)}"
+                                                class="form-element-imageupload-link">
+                                                <f:image image="{singleImage}"
+                                                    maxWidth="{element.properties.imageMaxWidth}"
+                                                    maxHeight="{element.properties.imageMaxHeight}"
+                                                    alt="{singleImage.originalResource.originalFile.name}"
+                                                    class="form-element-imageupload-thumbnail shadow img-fluid mb-2" />
+                                            </a>
+
+
+
+                                            <f:if condition="{element.properties.allowRemoval}">
+                                                <div class="form-check form-switch mb-2">
+                                                    <formvh:form.uploadDeleteCheckbox property="{element.identifier}"
+                                                        fileReference="{singleImage}" fileIndex="{iterator.index}"
+                                                        class="form-check-input" role="switch"
+                                                        id="{element.uniqueIdentifier}-form-switch" />
+                                                    <label for="{element.uniqueIdentifier}-form-switch"
+                                                        class="form-check-label form-element-imageupload-remove">
+                                                        <f:translate key="upload.remove" domain="form"
+                                                            default="Remove" />
+                                                    </label>
+                                                </div>
+                                                <span
+                                                    class="visually-hidden">{singleImage.originalResource.originalFile.name}</span>
+                                            </f:if>
+
+                                        </div>
+
+                                    </f:for>
+
+                                </div>
+                            </div>
+
+
+
+                        </f:then>
+                        <f:else>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-3 border mb-2 pt-2 bg-light"
+                                        id="{element.uniqueIdentifier}-preview"
+                                        class="form-element-imageupload-preview mb-3">
+
+
+                                        <a href="{f:uri.image(image: image, maxWidth: element.properties.imageLinkMaxWidth)}"
+                                            class="form-element-imageupload-link">
+                                            <f:image image="{image}" maxWidth="{element.properties.imageMaxWidth}"
+                                                maxHeight="{element.properties.imageMaxHeight}"
+                                                alt="{image.originalResource.originalFile.name}"
+                                                class="form-element-imageupload-thumbnail shadow img-fluid mb-2" />
+                                        </a>
+
+                                        <f:if condition="{element.properties.allowRemoval}">
+                                            <div class="form-check form-switch mb-2">
+                                                <formvh:form.uploadDeleteCheckbox property="{element.identifier}"
+                                                    fileReference="{image}" fileIndex="0" class="form-check-input"
+                                                    role="switch" id="{element.uniqueIdentifier}-form-switch" />
+                                                <label for="{element.uniqueIdentifier}-form-switch"
+                                                    class="form-check-label form-element-imageupload-remove">
+                                                    <f:translate key="upload.remove" domain="form" default="Remove" />
+                                                </label>
+
+                                            </div>
+
+                                            <span
+                                                class="visually-hidden">{image.originalResource.originalFile.name}</span>
+
+                                        </f:if>
+                                    </div>
+                                </div>
+                            </div>
+                        </f:else>
+                    </f:if>
+                </f:if>
+            </formvh:form.uploadedResource>
+        </f:render>
+    </f:form.validationResults>
+</formvh:renderRenderable>
+
+</html>

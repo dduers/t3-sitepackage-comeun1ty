@@ -1,0 +1,15 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:spaceless>
+    <f:if condition="{settings.{key}}">
+        <f:then>
+            {settings.{key}}
+        </f:then>
+        <f:else>
+            <!-- <div class="alert alert-warning"> -->
+                <f:translate domain="felogin.messages" key="{key}" />
+            <!-- </div> -->
+        </f:else>
+    </f:if>
+</f:spaceless>
+
+</html>

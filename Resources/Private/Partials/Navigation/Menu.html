@@ -1,0 +1,38 @@
+<ul class="navbar-nav align-items-center">
+    <f:for each="{menu}" as="menuItem">
+
+        <f:if condition="{menuItem.children}">
+            <f:then>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        {menuItem.title}
+                    </a>
+                    <ul class="dropdown-menu">
+                        <f:for each="{menuItem.children}" as="child">
+                            <f:if condition="{child.spacer}">
+                                <f:then>
+                                    <li><hr class="dropdown-divider"></li>
+                                </f:then>
+                                <f:else>
+                                    <li>
+                                        <a href="{child.link}" class="dropdown-item {child.active ? 'active' : ''}"
+                                            aria-current="page">{child.title}</a>
+                                        <!-- Recursively render deeper levels if needed -->
+                                    </li>
+                                </f:else>
+                            </f:if>
+                        </f:for>
+                    </ul>
+                </li>
+            </f:then>
+            <f:else>
+                <!-- No children, render as a normal link -->
+                <li class="nav-item">
+                    <a href="{menuItem.link}" class="nav-link {menuItem.active ? 'active' : ''}"
+                        aria-current="page">{menuItem.title}</a>
+                </li>
+            </f:else>
+        </f:if>
+    </f:for>
+</ul>

@@ -1,0 +1,19 @@
+TYPO3:
+  CMS:
+    Form:
+      prototypes:
+        standard:
+          formElementsDefinition:
+            # CustomFormElementIdentifier:
+            #   implementationClassName: 'TYPO3\CMS\Form\Domain\Model\FormElements\GenericFormElement'
+            Form:
+              renderingOptions:
+                templateRootPaths:
+                  10: "EXT:form/Resources/Private/Frontend/Templates/"
+                  201: "EXT:t3_sitepackage_comeun1ty/Resources/Private/Form/Frontend/Templates/"
+                partialRootPaths:
+                  10: "EXT:form/Resources/Private/Frontend/Partials/"
+                  201: "EXT:t3_sitepackage_comeun1ty/Resources/Private/Form/Frontend/Partials/"
+                layoutRootPaths:
+                  10: "EXT:form/Resources/Private/Frontend/Layouts/"
+                  201: "EXT:t3_sitepackage_comeun1ty/Resources/Private/Form/Frontend/Layouts/"

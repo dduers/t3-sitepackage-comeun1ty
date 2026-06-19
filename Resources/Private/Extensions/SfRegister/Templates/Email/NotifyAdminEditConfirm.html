@@ -1,0 +1,19 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	xmlns:register="http://typo3.org/ns/Evoweb/SfRegister/ViewHelpers"
+	data-namespace-typo3-fluid="true">
+
+<f:layout name="Email" />
+
+<f:section name="Main">
+    <f:variable name="form" value="{f:if(condition: '{settings.enableConfirmationButtonForEmailLinks} == true', then: 'Form')}" />
+
+	<f:format.raw><f:translate id="email_admin_salutation"/></f:format.raw>,<br>
+	<br>
+	<f:format.raw><f:translate id="email_admin_account_activated" arguments="{0: user.username}"/></f:format.raw><br>
+	<br>
+	<register:link.action arguments="{user: user.uid}" action="accept{form}" controller="FeuserEdit" absolute="true">
+		<f:translate id="email_admin_activate_link"/>
+	</register:link.action>
+</f:section>
+
+</html>
