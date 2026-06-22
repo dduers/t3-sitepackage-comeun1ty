@@ -8,10 +8,10 @@ TYPO3:
               renderingOptions:
                 templateRootPaths:
                   10: "EXT:form/Resources/Private/Frontend/Templates/"
-                  300: "EXT:t3_sitepackage_comeun1ty/Resources/Private/Extensions/Cms/Form/Templates/"
+                  20: "EXT:t3_sitepackage_comeun1ty/Resources/Private/Extensions/Cms/Form/Templates/"
                 partialRootPaths:
                   10: "EXT:form/Resources/Private/Frontend/Partials/"
-                  300: "EXT:t3_sitepackage_comeun1ty/Resources/Private/Extensions/Cms/Form/Partials/"
+                  20: "EXT:t3_sitepackage_comeun1ty/Resources/Private/Extensions/Cms/Form/Partials/"
                 layoutRootPaths:
                   10: "EXT:form/Resources/Private/Frontend/Layouts/"
-                  300: "EXT:t3_sitepackage_comeun1ty/Resources/Private/Extensions/Cms/Form/Layouts/"
+                  20: "EXT:t3_sitepackage_comeun1ty/Resources/Private/Extensions/Cms/Form/Layouts/"
