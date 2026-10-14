@@ -3,6 +3,7 @@ routeEnhancers:
     type: PageType
     map:
       sitemap.xml: 1533906435
+      ajax.json: 458962
   News:
     type: Extbase
     # limitToPages:
